@@ -1,0 +1,7 @@
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  name: smcp
+  namespace: sandbox-sm
+spec:
+  version: v2.2
