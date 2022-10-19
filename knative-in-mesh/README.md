@@ -14,7 +14,7 @@ k apply -f config/kafka/100-amq-streams-kafka.yaml
 
 # Install Knative Eventing
 k apply -f config/knative-eventing/100-knative-eventing.yaml
-k apply -f config/knative-evenitng/101-knative-kafka.yaml
+k apply -f config/knative-eventing/101-knative-kafka.yaml
 
 # Create Mesh in sandbox-sm with (knative-eventing, knative-serving, sandbox, and sandbox-sm namespaces)
 k apply -f config/sandbox-sm/100-namespace.yaml
