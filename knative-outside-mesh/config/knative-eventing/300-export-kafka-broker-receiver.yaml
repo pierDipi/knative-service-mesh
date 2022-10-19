@@ -1,0 +1,14 @@
+kind: ExportedServiceSet
+apiVersion: federation.maistra.io/v1
+metadata:
+  name: sandbox-mesh
+  namespace: knative-eventing-sm
+spec:
+  exportRules:
+    - type: NameSelector
+      nameSelector:
+        namespace: knative-eventing
+        name: kafka-broker-ingress
+        alias:
+          namespace: sandbox
+          name: kafka-broker-ingress

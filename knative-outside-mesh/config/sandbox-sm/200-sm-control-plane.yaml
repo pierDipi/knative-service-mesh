@@ -1,0 +1,45 @@
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  name: sandbox-mesh
+  namespace: sandbox-sm
+spec:
+  version: v2.2
+  security:
+    dataPlane:
+      mtls: true
+    trust:
+      domain: sandbox-mesh.local
+  gateways:
+    additionalEgress:
+      # Egress traffic to Knative Eventing
+      egress-knative-eventing-mesh:
+        enabled: true
+        requestedNetworkView:
+          - knative-eventing-network
+        routerMode: sni-dnat
+        service:
+          metadata:
+            labels:
+              federation.maistra.io/egress-for: egress-knative-eventing-mesh
+          ports:
+            - port: 15443
+              name: tls
+            - port: 8188
+              name: http-discovery  #note HTTP here
+
+    additionalIngress:
+      # Ingress traffic from Knative Eventing mesh
+      ingress-knative-eventing-mesh:
+        enabled: true
+        routerMode: sni-dnat
+        service:
+          type: LoadBalancer
+          metadata:
+            labels:
+              federation.maistra.io/ingress-for: ingress-knative-eventing-mesh
+          ports:
+            - port: 15443
+              name: tls
+            - port: 8188
+              name: https-discovery  #note HTTPS here

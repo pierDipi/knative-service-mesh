@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: kafka-cluster-external
+  namespace: knative-eventing
+spec:
+  hosts:
+    - my-cluster-kafka-bootstrap.kafka
+  # This must be Kafka cluster IPs, hosts is ignored for TCP protocol service entries
+  # https://istio.io/v1.13/blog/2018/egress-tcp/
+  addresses:
+    - "10.130.2.29"
+    - "10.128.2.28"
+    - "10.131.0.35"
+  ports:
+    - number: 9092
+      name: tcp-plain
+      protocol: TCP
+  exportTo:
+    - "."
+  location: MESH_EXTERNAL

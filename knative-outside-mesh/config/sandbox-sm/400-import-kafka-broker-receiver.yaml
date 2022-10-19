@@ -1,0 +1,12 @@
+kind: ImportedServiceSet
+apiVersion: federation.maistra.io/v1
+metadata:
+  name: knative-eventing-sm
+  namespace: sandbox-sm
+spec:
+  importRules:
+    - type: NameSelector
+      importAsLocal: false
+      nameSelector:
+        namespace: knative-eventing
+        name: kafka-broker-receiver
