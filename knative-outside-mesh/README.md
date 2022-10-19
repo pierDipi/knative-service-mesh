@@ -49,7 +49,7 @@ k patch -n knative-eventing deployment kafka-channel-dispatcher --patch-file con
 k patch -n knative-eventing deployment kafka-sink-receiver --patch-file config/patch/kafka-broker-patch.yaml
 k patch -n knative-eventing deployment kafka-source-dispatcher --patch-file config/patch/kafka-broker-patch.yaml
 
-# Install application and an Knative Kafka Broker
+# Install application and a Knative Kafka Broker
 k apply -f config/sandbox/100-namespace.yaml
 k apply -f config/sandbox/200-kafka-broker-example.yaml
 
