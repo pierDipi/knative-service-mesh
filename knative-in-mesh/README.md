@@ -22,6 +22,7 @@ k apply -f config/sandbox-sm/200-sm-control-plane.yaml
 k apply -f config/sandbox-sm/300-sm-member-roll.yaml
 
 # Allow API server to access Knative Eventing webhooks
+k apply -f config/knative-eventing/200-allow-api-server-access-webhook.yaml
 
 # Install application and Knative Kafka Broker
 k apply -f config/sandbox/100-namespace.yaml
