@@ -14,7 +14,7 @@ k apply -f config/kafka/100-amq-streams-kafka.yaml
 
 # Install Knative Eventing
 k apply -f config/knative-eventing/100-knative-eventing.yaml
-k apply -f config/knative-evenitng/101-knative-kafka.yaml
+k apply -f config/knative-eventing/101-knative-kafka.yaml
 
 # Create Mesh in sandbox-sm with (knative-eventing, knative-serving, sandbox, and sandbox-sm namespaces)
 k apply -f config/sandbox-sm/100-namespace.yaml
@@ -22,6 +22,7 @@ k apply -f config/sandbox-sm/200-sm-control-plane.yaml
 k apply -f config/sandbox-sm/300-sm-member-roll.yaml
 
 # Allow API server to access Knative Eventing webhooks
+k apply -f config/knative-eventing/200-allow-api-server-access-webhook.yaml
 
 # Install application and Knative Kafka Broker
 k apply -f config/sandbox/100-namespace.yaml

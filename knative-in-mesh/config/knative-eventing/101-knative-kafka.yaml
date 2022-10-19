@@ -5,10 +5,12 @@ metadata:
   namespace: knative-eventing
 spec:
   channel:
-    enabled: true
+    enabled: false
     bootstrapServers: my-cluster-kafka-bootstrap.kafka:9092
   source:
     enabled: true
+  sink:
+    enabled: false
   broker:
     enabled: true
     defaultConfig:
